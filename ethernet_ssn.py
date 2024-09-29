@@ -1,9 +1,3 @@
-#ReyesRamirezOswaldo.
-#ProgramaPython_EjemploProfesor: Santana Sanchez Sergio Nicolas.
-#Este programa se utilza con práctica1 de Comunicaciones En SistemasEmbebidos.
-#!!NOTAS: Fue necesario instalar librerias de Python: Crypto.Ciper y Scapy.
-# Configure Scapy to use the ethernet interface
-#conf.iface="Realtek PCIe GbE Family Controller" //Aqui se pone el controlador del equipo
 
 import zlib
 from Crypto.Cipher import AES

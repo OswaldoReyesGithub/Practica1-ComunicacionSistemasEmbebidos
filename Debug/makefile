@@ -11,25 +11,13 @@ RM := rm -rf
 -include utilities/subdir.mk
 -include startup/subdir.mk
 -include source/subdir.mk
--include phy/subdir.mk
--include mdio/subdir.mk
--include lwip/src/netif/ppp/subdir.mk
--include lwip/src/netif/subdir.mk
--include lwip/src/core/ipv6/subdir.mk
--include lwip/src/core/ipv4/subdir.mk
--include lwip/src/core/subdir.mk
--include lwip/src/api/subdir.mk
--include lwip/port/subdir.mk
--include lwip/contrib/apps/tcpecho/subdir.mk
--include freertos/freertos_kernel/portable/MemMang/subdir.mk
--include freertos/freertos_kernel/portable/GCC/ARM_CM4F/subdir.mk
--include freertos/freertos_kernel/subdir.mk
 -include drivers/subdir.mk
 -include device/subdir.mk
 -include component/uart/subdir.mk
 -include component/serial_manager/subdir.mk
 -include component/lists/subdir.mk
 -include board/subdir.mk
+-include Oswaldo_layer/subdir.mk
 ifneq ($(MAKECMDGOALS),clean)
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
@@ -44,7 +32,7 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := Practica1_ReyesRamirezOswaldo_tx_rx_enettransfer
+BUILD_ARTIFACT_NAME := Practica1Oswaldo_aes_crc32_txrx_transfer3
 BUILD_ARTIFACT_EXTENSION := axf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
@@ -56,24 +44,24 @@ all:
 	+@$(MAKE) --no-print-directory main-build && $(MAKE) --no-print-directory post-build
 
 # Main-build Target
-main-build: Practica1_ReyesRamirezOswaldo_tx_rx_enettransfer.axf
+main-build: Practica1Oswaldo_aes_crc32_txrx_transfer3.axf
 
 # Tool invocations
-Practica1_ReyesRamirezOswaldo_tx_rx_enettransfer.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
+Practica1Oswaldo_aes_crc32_txrx_transfer3.axf: $(OBJS) $(USER_OBJS) makefile $(OPTIONAL_TOOL_DEPS)
 	@echo 'Building target: $@'
 	@echo 'Invoking: MCU Linker'
-	arm-none-eabi-gcc -nostdlib -Xlinker -Map="Practica1_ReyesRamirezOswaldo_tx_rx_enettransfer.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T Practica1_ReyesRamirezOswaldo_tx_rx_enettransfer_Debug.ld -o "Practica1_ReyesRamirezOswaldo_tx_rx_enettransfer.axf" $(OBJS) $(USER_OBJS) $(LIBS)
+	arm-none-eabi-gcc -nostdlib -Xlinker -Map="Practica1Oswaldo_aes_crc32_txrx_transfer3.map" -Xlinker --gc-sections -Xlinker -print-memory-usage -Xlinker --sort-section=alignment -Xlinker --cref -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -T Practica1Oswaldo_aes_crc32_txrx_transfer3_Debug.ld -o "Practica1Oswaldo_aes_crc32_txrx_transfer3.axf" $(OBJS) $(USER_OBJS) $(LIBS)
 	@echo 'Finished building target: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) Practica1_ReyesRamirezOswaldo_tx_rx_enettransfer.axf
+	-$(RM) Practica1Oswaldo_aes_crc32_txrx_transfer3.axf
 	-@echo ' '
 
 post-build:
 	-@echo 'Performing post-build steps'
-	-arm-none-eabi-size "Practica1_ReyesRamirezOswaldo_tx_rx_enettransfer.axf"; # arm-none-eabi-objcopy -v -O binary "Practica1_ReyesRamirezOswaldo_tx_rx_enettransfer.axf" "Practica1_ReyesRamirezOswaldo_tx_rx_enettransfer.bin" ; # checksum -p MK64FN1M0xxx12 -d "Practica1_ReyesRamirezOswaldo_tx_rx_enettransfer.bin";
+	-arm-none-eabi-size "Practica1Oswaldo_aes_crc32_txrx_transfer3.axf"; # arm-none-eabi-objcopy -v -O binary "Practica1Oswaldo_aes_crc32_txrx_transfer3.axf" "Practica1Oswaldo_aes_crc32_txrx_transfer3.bin" ; # checksum -p MK64FN1M0xxx12 -d "Practica1Oswaldo_aes_crc32_txrx_transfer3.bin";
 	-@echo ' '
 
 .PHONY: all clean dependents main-build post-build
